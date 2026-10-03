@@ -44,6 +44,9 @@ class PacketTunnelSettingsGenerator {
         var resolutionResults = [EndpointResolutionResult?]()
         var wgSettings = ""
         wgSettings.append("private_key=\(tunnelConfiguration.interface.privateKey.hexKey)\n")
+        if let amnezia = tunnelConfiguration.interface.amnezia {
+            wgSettings.append(amnezia.uapiLines)
+        }
         if let listenPort = tunnelConfiguration.interface.listenPort {
             wgSettings.append("listen_port=\(listenPort)\n")
         }

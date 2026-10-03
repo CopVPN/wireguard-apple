@@ -13,6 +13,8 @@ public struct InterfaceConfiguration {
     public var dnsSearch = [String]()
     public var dnsHTTPSURL: URL? = nil
     public var dnsTLSServerName: String? = nil
+    /// AmneziaWG obfuscation; nil for plain WireGuard.
+    public var amnezia: AmneziaParameters?
 
     public init(privateKey: PrivateKey) {
         self.privateKey = privateKey
@@ -29,6 +31,7 @@ extension InterfaceConfiguration: Equatable {
             lhs.listenPort == rhs.listenPort &&
             lhs.mtu == rhs.mtu &&
             lhs.dns == rhs.dns &&
-            lhs.dnsSearch == rhs.dnsSearch
+            lhs.dnsSearch == rhs.dnsSearch &&
+            lhs.amnezia == rhs.amnezia
     }
 }
